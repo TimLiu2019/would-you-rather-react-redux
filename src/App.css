@@ -23,31 +23,22 @@ body,
   border-style: solid;
   border-collapse: collapse;
 }
-.tab{
-  width: 49%; /*Slightly less than 1/2th of the width*/ 
+.tab {
+  width: 49%; /*Slightly less than 1/2th of the width*/
   display: inline-block;
   padding: 0;
   margin: 0;
   text-align: center;
-  border:1px solid;
+  border: 1px solid;
 }
 
+/* question card */
 
-.c-tabBar {
-  width: 50%;
-  min-height: 100px;
-  margin: 0 auto;
-  border-radius: 7px;
-  border: 1px;
-  border-style: solid;
- 
+.avatar {
+  width: 30%;
+  float: left;
 }
-.c-tab {
-  width: 49%;
-  display: inline-block;
-  padding: 8px 16px 4px;
-  border-radius: 8px 8px 0 0;
-  border:  #999999 solid;
-  border-bottom: none;
- 
+.card-text {
+  width: 70%;
+  float: right;
 }
