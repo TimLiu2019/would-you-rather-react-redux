@@ -1,18 +1,23 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import Button from 'react-bootstrap/Button'
 
 const QuestionCard = props => {
-    useEffect(() => {
-        console.log('question list props',props)
-    });
+  useEffect(() => {
+    console.log("question list props", props);
+  });
   return (
-    <div>
-      <h2>{props.author}</h2>
-      <div className="avatar"></div>
-      <div className="card-text">
-        <h4> Would you rather</h4>
-        <p>{props.text}</p>
-        <button>View Poll</button>
+    <div className="question">
+      <p >{props.author} asks:</p>
+      <div>
+        <div className="avatar-div">
+          <img src={props.avatar} alt={`Avatar of ${props.author}`} className="avatar" />
+        </div>
+        <div className="card-text">
+          <p > Would you rather</p>
+          <p className='question-text'>{props.text}</p>
+          <Button variant="outline-primary">View Poll</Button>
+        </div>
       </div>
     </div>
   );
@@ -23,8 +28,9 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
 
   return {
     authedUser,
-    author:question.author,
-    text:question.text
+    author: question.author,
+    text: question.optionOne.text,
+    avatar: users[question.author].avatarURL
   };
 }
 

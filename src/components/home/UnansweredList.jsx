@@ -7,7 +7,7 @@ const UnansweredList = props => {
     console.log("unanswered id list", props);
   });
   return (
-    <div>
+    <div >
       {props.questionIds.map(id => (
         <li key={id}>
           <QuestionCard id={id} />
@@ -19,14 +19,15 @@ const UnansweredList = props => {
 
 function mapStateToProps({ questions, users, authedUser }) {
   const user = users[authedUser];
-  console.log('authedUser',authedUser)
-  console.log('user',user)
-  let answered = null
-  if(user !== null && user!==undefined) {
-    console.log('questions',user.questions)
-     answered = user.questions
-}
-  
+  console.log("authedUser", authedUser);
+  console.log("user", user);
+  let answered = [];
+  if (user !== null && user !== undefined) {
+    console.log("questions", user.answers);
+    Object.keys(user.answers).forEach(key => {
+      answered.push(key);
+    });
+  }
   const questionIds =  Object.keys(questions)
   let unanswered = questionIds
   if(answered !== null){

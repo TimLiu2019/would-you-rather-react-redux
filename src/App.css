@@ -1,22 +1,78 @@
-html,
-body,
-.root {
-  height: 100%;
-}
-
 body {
-  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: #252525;
 }
 
-body,
-.app {
-  background: white;
+a {
+  text-decoration: none;
+  color: #252525;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.btn {
+  text-transform: uppercase;
+  margin: 35px auto;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.29);
+  cursor: pointer;
+  background: #fff;
+  font-size: 16px;
+  width: 250px;
+  position: relative;
+}
+
+.btn:hover {
+  border-color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline: 0;
+  font-weight: 700;
+  border-width: 2px;
+}
+
+.center {
+  text-align: center;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+.nav li:first-child {
+  padding-left: 0;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
 }
 
 /* main page */
 .tab-container {
   width: 50%;
-  max-height: 90%;
+  min-height: 30%;
+  height: flex;
   margin: 0 auto;
   border-radius: 7px;
   border: 1px;
@@ -34,11 +90,52 @@ body,
 
 /* question card */
 
-.avatar {
-  width: 30%;
+.avatar-div {
+  width: 25%;
   float: left;
+  
+}
+.avatar {
+  height: 100px;
+  border-radius: 50px;
+  margin: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .card-text {
   width: 70%;
   float: right;
+  margin-left: 10px;
+  border-left: 1px dotted;
+  padding-left: 20px;
+  height:100%
+}
+.question-text{
+  color: #969696;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100px;
+  white-space: nowrap;
+}
+
+.question {
+  width: 100%;
+  max-width: 590px;
+  padding: 0 auto;
+  display: flex;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  cursor: pointer;
+  flex-direction: column;
+}
+
+.question > p {
+  background-color:lightgray;
+  font-size: 1.2em;
+  vertical-align: middle;
+  padding: 10px;
+
 }
