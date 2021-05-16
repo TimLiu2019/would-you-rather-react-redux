@@ -9,14 +9,14 @@ const QuestionCard = props => {
   return (
     <div className="question">
       <p >{props.author} asks:</p>
-      <div>
+      <div className='card-container'>
         <div className="avatar-div">
           <img src={props.avatar} alt={`Avatar of ${props.author}`} className="avatar" />
         </div>
         <div className="card-text">
           <p > Would you rather</p>
           <p className='question-text'>{props.text}</p>
-          <Button variant="outline-primary">View Poll</Button>
+          <Button variant="outline-primary" className='btn-m'>View Poll</Button>
         </div>
       </div>
     </div>
