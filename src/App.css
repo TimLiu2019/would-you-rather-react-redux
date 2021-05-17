@@ -93,8 +93,7 @@ li {
 .avatar-div {
   width: 28%;
   float: left;
-  margin:auto
-  
+  margin: auto;
 }
 .avatar {
   height: 100px;
@@ -102,17 +101,16 @@ li {
   margin: auto;
   display: block;
   border-radius: 50%;
- 
 }
 .card-text {
   width: 70%;
   float: right;
-  margin:0;
+  margin: 0;
   border-left: 1px dotted;
   padding-left: 10px;
-  height:100%
+  height: 100%;
 }
-.question-text{
+.question-text {
   color: #969696;
   font-size: 15px;
   overflow: hidden;
@@ -132,17 +130,52 @@ li {
   cursor: pointer;
   flex-direction: column;
 }
-.card-container{
-  margin-bottom: 10px
+.card-container {
+  margin-bottom: 10px;
 }
 
 .question > p {
-  background-color:lightgray;
+  background-color: lightgray;
   font-size: 1.2em;
   vertical-align: middle;
   padding: 10px;
-
 }
-.btn-m{
-  margin:5px !important;
+.btn-m {
+  margin: 5px !important;
+}
+
+/* new question*/
+.new-question {
+  width: 100%;
+  max-width: 590px;
+  padding: 0;
+  display: flex;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  cursor: pointer;
+  flex-direction: column;
+}
+
+.new-question > h4 {
+  background-color: lightgray;
+  padding: 10px;
+}
+.new-question > p {
+  padding-left: 10px;
+  margin: 5px;
+}
+.new-question-title {
+  font-weight: bold;
+}
+.new-question > input {
+  padding: 5px;
+  width:95%;
+  margin:10px auto;
+}
+.new-question > button {
+  width: 95%;
+  height: 90%;
+  margin: 10px auto;
+  padding: 5px;
 }
