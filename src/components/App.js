@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
 import Home from "./Home";
+import Nav from "./Nav";
 import NewQuestion from "./newQuestion/NewQuestion";
 import "../App.css";
 
@@ -15,6 +16,7 @@ const App = props => {
     <Router>
       <Fragment>
         <div className="container">
+          <Nav />
           <Route path="/" exact component={Home} />
           <Route path="/new" component={NewQuestion} />
         </div>
