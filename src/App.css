@@ -170,12 +170,22 @@ li {
 }
 .new-question > input {
   padding: 5px;
-  width:95%;
-  margin:10px auto;
+  width: 95%;
+  margin: 10px auto;
 }
 .new-question > button {
   width: 95%;
   height: 90%;
   margin: 10px auto;
   padding: 5px;
+}
+.option {
+  height: 40%;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  margin: 10px;
+  font-weight: bold;
+}
+.option > ProgressBar {
+  margin: 10px;
 }

@@ -17,7 +17,7 @@ export default function Nav() {
         </li>
         <li>
           <NavLink
-            to="/new"
+            to="/add"
             activeClassName="active"
             className="nav-item nav-link "
           >
