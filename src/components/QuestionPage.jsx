@@ -1,23 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom'
 import { connect } from "react-redux";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Badge from "react-bootstrap/Badge";
+import Button from "react-bootstrap/Button";
 
 const QuestionPage = props => {
   useEffect(() => {
     console.log("Question", props.question);
   });
-  const { question, id, option, users } = props;
+  const [checkedOptionValue, setCheckedOptionValue] = useState("optionOne");
+  const history = useHistory();
+  const { question, id, option, users, options } = props;
   if (question === null) {
     return <p> This question doesn't existed </p>;
   }
   const selectedStyle = {
     backgroundColor: "#add8e6"
   };
+  const handleSubmit = e => {
+    e.preventDefault();
+    const { dispatch } = props;
+    console.log("submit vote");
+
+    history.push("/");
+  };
+
+  const handleRadioChange = e => {
+    setCheckedOptionValue(e.target.value);
+    console.log("checkedValue", e.target.value);
+  };
+
   if (option === null) {
     return (
       <div className="question">
-        <p>Asked by {question.author} </p>
+        <p>{question.author} asks: </p>
         <div className="card-container">
           <div className="avatar-div">
             <img
@@ -27,13 +44,27 @@ const QuestionPage = props => {
             />
           </div>
           <div className="card-text">
-            <p className="new-question-title"> Result:</p>
-            <div className="option-card">
-              <p>{question.optionOne.text}</p>
-            </div>
-            <div className="option-card">
-              <p>{question.optionTwo.text}</p>
-            </div>
+            <p className="new-question-title"> Would You Rather...</p>
+            <form onSubmit={handleSubmit}>
+              {options.map(option => (
+                <div key={option.value} className="radio">
+                  <label>
+                    <input
+                      type="radio"
+                      name="radio"
+                      className="radio-btn"
+                      value={option.value}
+                      checked={checkedOptionValue === option.value}
+                      onChange={handleRadioChange}
+                    />
+                    {option.label}
+                  </label>
+                </div>
+              ))}
+              <Button variant="outline-primary" type="submit">
+                Submit
+              </Button>
+            </form>
           </div>
         </div>
       </div>
@@ -105,7 +136,11 @@ function mapStateToProps({ authedUser, questions, users }, props) {
     id,
     question: questions[id],
     option,
-    users
+    users,
+    options: [
+      { label: questions[id].optionOne.text, value: "optionOne" },
+      { label: questions[id].optionTwo.text, value: "optionTwo" }
+    ]
   };
 }
 
