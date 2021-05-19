@@ -5,7 +5,7 @@ import { handleInitialData } from "../actions/shared";
 import Home from "./Home";
 import Nav from "./Nav";
 import NewQuestion from "./newQuestion/NewQuestion";
-import Question from "./Question";
+import QuestionPage from "./QuestionPage";
 import "../App.css";
 
 const App = props => {
@@ -20,7 +20,7 @@ const App = props => {
           <Nav />
           <Route path="/" exact component={Home} />
           <Route path="/add" component={NewQuestion} />
-          <Route path="/questions/:id" component={Question} />
+          <Route path="/questions/:id" component={QuestionPage} />
         </div>
       </Fragment>
     </Router>

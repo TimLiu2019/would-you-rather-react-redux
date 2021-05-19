@@ -179,13 +179,20 @@ li {
   margin: 10px auto;
   padding: 5px;
 }
-.option {
+.option-card {
   height: 40%;
   border: 1px solid #dad7d7;
   border-radius: 3px;
   margin: 10px;
   font-weight: bold;
 }
-.option > ProgressBar {
+.option {
   margin: 10px;
+  padding:10px;
+}
+.badge-position{
+  position: relative;
+  float:right;
+  top:-10px;
+
 }
