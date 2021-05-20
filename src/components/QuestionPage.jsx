@@ -12,7 +12,7 @@ const QuestionPage = props => {
   });
   const [checkedOptionValue, setCheckedOptionValue] = useState("optionOne");
   const history = useHistory();
-  const { question, id, option, users, options } = props;
+  const { question, option, users, options } = props;
   if (question === null) {
     return <p> This question doesn't existed </p>;
   }
@@ -29,7 +29,6 @@ const QuestionPage = props => {
         answer: checkedOptionValue
       })
     );
-    console.log("submit vote",checkedOptionValue);
 
     history.push(`/questions/${id}`);
   };
@@ -130,19 +129,26 @@ function mapStateToProps({ authedUser, questions, users }, props) {
   const { id } = props.match.params;
   const user = users[authedUser];
   let option = null;
-  console.log('questions',questions)
-  console.log('id',id)
-  console.log('question author',questions[id])
-  if (user !== null && user !== undefined) {
-    console.log("answer", user.answers);
-    Object.keys(user.answers).forEach(key => {
-      //  answered.push({ id: key, option: user.answers[key] });
-      if (key === id) {
-        option = user.answers[key];
-      }
-    });
+  // if (user !== null && user !== undefined) {
+  //   console.log("answer", user.answers);
+  //   Object.keys(user.answers).forEach(key => {
+  //     //  answered.push({ id: key, option: user.answers[key] });
+  //     if (key === id) {
+  //       option = user.answers[key];
+  //     }
+  //   });
+  // }
+  const question = questions[id];
+  if (option === null && question) {
+    const optionO = question.optionOne;
+    const optionT = question.optionTwo;
+    if (optionO.votes.includes(authedUser)) {
+      option = "optionOne";
+    } else if (optionT.votes.includes(authedUser)) {
+      option = "optionTwo";
+    }
   }
-  // const question = questions[props.match.params];
+
   return {
     id,
     question: questions[id],
