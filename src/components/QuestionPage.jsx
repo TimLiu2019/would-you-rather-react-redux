@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
+import { handleAnswerQuestion } from "../actions/questions";
 
 const QuestionPage = props => {
   useEffect(() => {
@@ -20,10 +21,17 @@ const QuestionPage = props => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    const { dispatch } = props;
-    console.log("submit vote");
+    const { dispatch, id, authedUser } = props;
+    dispatch(
+      handleAnswerQuestion({
+        authedUser: authedUser,
+        qid: id,
+        answer: checkedOptionValue
+      })
+    );
+    console.log("submit vote",checkedOptionValue);
 
-    history.push("/");
+    history.push(`/questions/${id}`);
   };
 
   const handleRadioChange = e => {
@@ -122,8 +130,11 @@ function mapStateToProps({ authedUser, questions, users }, props) {
   const { id } = props.match.params;
   const user = users[authedUser];
   let option = null;
+  console.log('questions',questions)
+  console.log('id',id)
+  console.log('question author',questions[id])
   if (user !== null && user !== undefined) {
-    console.log("questions", user.answers);
+    console.log("answer", user.answers);
     Object.keys(user.answers).forEach(key => {
       //  answered.push({ id: key, option: user.answers[key] });
       if (key === id) {
@@ -140,7 +151,8 @@ function mapStateToProps({ authedUser, questions, users }, props) {
     options: [
       { label: questions[id].optionOne.text, value: "optionOne" },
       { label: questions[id].optionTwo.text, value: "optionTwo" }
-    ]
+    ],
+    authedUser
   };
 }
 

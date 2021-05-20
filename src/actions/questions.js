@@ -1,4 +1,5 @@
 import { saveQuestion } from "../utils/api";
+import { _saveQuestionAnswer } from "../utils/_DATA";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -18,10 +19,12 @@ export function addQuestion(question) {
   };
 }
 
-export function answerQuestion(question) {
+export function answerQuestion({ authedUser, qid, answer }) {
   return {
     type: ANSWER_QUESTION,
-    question
+    authedUser,
+    qid,
+    answer
   };
 }
 
@@ -34,5 +37,15 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
       optionTwoText,
       author: authedUser
     }).then(question => dispatch(addQuestion(question)));
+  };
+}
+
+export function handleAnswerQuestion(info) {
+  return dispatch => {
+    dispatch(answerQuestion(info));
+    return _saveQuestionAnswer(info).catch(e => {
+      console.warn("Error in handleAnswerQuestion", e);
+      dispatch(answerQuestion(info));
+    });
   };
 }
