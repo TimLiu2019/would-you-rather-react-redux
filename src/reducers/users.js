@@ -26,15 +26,17 @@ export default function users(state = {}, action) {
           }
         }
       };
-    // when add answer to user failed to server, remove it from store
+    // when add answer to user but failed to server side, remove it from store
     case REMOVE_ANSWER_USERS:
+      let before_answers = state[action.authedUser].answers;
+      // user underling to replace content
+      const { [action.qid]: _, ...answers } = before_answers;
+
       return {
         ...state,
         [action.authedUser]: {
           ...state[action.authedUser],
-          answers: state[action.authedUser].answers.filter(
-            answer => Object.keys(answer) !== action.qid
-          )
+          answers
         }
       };
     default:

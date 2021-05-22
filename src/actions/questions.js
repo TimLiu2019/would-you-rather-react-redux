@@ -1,6 +1,6 @@
 import { saveQuestion } from "../utils/api";
 import { _saveQuestionAnswer } from "../utils/_DATA";
-import {addAnswerToUsers} from './users'
+import { addAnswerToUsers, removeAnswerFromUsers } from "./users";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -44,12 +44,12 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
 export function handleAnswerQuestion(info) {
   return (dispatch, getState) => {
     const { users } = getState();
-    const {authedUser,qid,answer} = info;
-    dispatch(addAnswerToUsers({users,authedUser,qid,answer}))
+    const { authedUser, qid, answer } = info;
+    dispatch(addAnswerToUsers({ users, authedUser, qid, answer }));
     dispatch(answerQuestion(info));
     return _saveQuestionAnswer(info).catch(e => {
       console.warn("Error in handleAnswerQuestion", e);
-      dispatch(answerQuestion(info));
+      dispatch(removeAnswerFromUsers({ users, authedUser, qid, answer }));
     });
   };
 }
