@@ -12,7 +12,14 @@ const QuestionPage = props => {
   });
   const [checkedOptionValue, setCheckedOptionValue] = useState("optionOne");
   const history = useHistory();
-  const { question, option, users, options } = props;
+  const {
+    question,
+    authedUserOption,
+    users,
+    options,
+    voteOneNum,
+    voteTwoNum
+  } = props;
   if (question === null) {
     return <p> This question doesn't existed </p>;
   }
@@ -38,7 +45,7 @@ const QuestionPage = props => {
     console.log("checkedValue", e.target.value);
   };
 
-  if (option === null) {
+  if (authedUserOption === null) {
     return (
       <div className="question">
         <p>{question.author} asks: </p>
@@ -78,7 +85,7 @@ const QuestionPage = props => {
     );
   }
 
-  const now = 60;
+
   return (
     <div className="question">
       <p>Asked by {question.author} </p>
@@ -94,30 +101,44 @@ const QuestionPage = props => {
           <p className="new-question-title"> Result:</p>
           <div
             className="option-card"
-            style={option === "optionOne" ? selectedStyle : null}
+            style={authedUserOption === "optionOne" ? selectedStyle : null}
           >
-            {option === "optionOne" && (
+            {authedUserOption === "optionOne" && (
               <Badge pill variant="success" className="badge-position">
                 Your Vote
               </Badge>
             )}
-            <p>{question.optionOne.text}</p>
+
             <div className="option">
-              <ProgressBar now={now} label={`${now}%`} />
+              <p>Would you rather {question.optionOne.text}?</p>
+              <ProgressBar
+                now={(voteOneNum / (voteOneNum + voteTwoNum)) * 100}
+                label={`${(voteOneNum / (voteOneNum + voteTwoNum)) * 100}%`}
+              />
+              <p className="center">
+                {voteOneNum} of {voteOneNum + voteTwoNum} votes
+              </p>
             </div>
           </div>
           <div
             className="option-card"
-            style={option === "optionTwo" ? selectedStyle : null}
+            style={authedUserOption === "optionTwo" ? selectedStyle : null}
           >
-            {option === "optionTwo" && (
+            {authedUserOption === "optionTwo" && (
               <Badge pill variant="success" className="badge-position">
                 Your Vote
               </Badge>
             )}
-            <p>{question.optionTwo.text}</p>
+
             <div className="option">
-              <ProgressBar now={now} label={`${now}%`} />
+              <p>Would you rather {question.optionTwo.text}?</p>
+              <ProgressBar
+                now={(voteTwoNum / (voteOneNum + voteTwoNum)) * 100}
+                label={`${(voteTwoNum / (voteOneNum + voteTwoNum)) * 100}%`}
+              />
+              <p className="center">
+                {voteTwoNum} of {voteOneNum + voteTwoNum} votes
+              </p>
             </div>
           </div>
         </div>
@@ -127,8 +148,10 @@ const QuestionPage = props => {
 };
 function mapStateToProps({ authedUser, questions, users }, props) {
   const { id } = props.match.params;
-  const user = users[authedUser];
-  let option = null;
+  //  const user = users[authedUser];
+  let authedUserOption = null;
+  let voteOneNum = 0;
+  let voteTwoNum = 0;
   // if (user !== null && user !== undefined) {
   //   console.log("answer", user.answers);
   //   Object.keys(user.answers).forEach(key => {
@@ -139,25 +162,29 @@ function mapStateToProps({ authedUser, questions, users }, props) {
   //   });
   // }
   const question = questions[id];
-  if (option === null && question) {
+  if (authedUserOption === null && question) {
     const optionO = question.optionOne;
     const optionT = question.optionTwo;
+    voteOneNum = optionO.votes.length;
+    voteTwoNum = optionT.votes.length;
     if (optionO.votes.includes(authedUser)) {
-      option = "optionOne";
+      authedUserOption = "optionOne";
     } else if (optionT.votes.includes(authedUser)) {
-      option = "optionTwo";
+      authedUserOption = "optionTwo";
     }
   }
 
   return {
     id,
     question: questions[id],
-    option,
+    authedUserOption,
     users,
     options: [
       { label: questions[id].optionOne.text, value: "optionOne" },
       { label: questions[id].optionTwo.text, value: "optionTwo" }
     ],
+    voteOneNum,
+    voteTwoNum,
     authedUser
   };
 }
