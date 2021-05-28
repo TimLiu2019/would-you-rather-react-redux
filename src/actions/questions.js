@@ -1,6 +1,10 @@
 import { saveQuestion } from "../utils/api";
 import { _saveQuestionAnswer } from "../utils/_DATA";
-import { addAnswerToUsers, removeAnswerFromUsers } from "./users";
+import {
+  addQuestionToUers,
+  addAnswerToUsers,
+  removeAnswerFromUsers
+} from "./users";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -31,13 +35,16 @@ export function answerQuestion({ authedUser, qid, answer }) {
 
 export function handleAddQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
-    const { authedUser } = getState();
+    const { authedUser, users } = getState();
 
     return saveQuestion({
       optionOneText,
       optionTwoText,
       author: authedUser
-    }).then(question => dispatch(addQuestion(question)));
+    }).then(question => {
+      dispatch(addQuestion(question));
+      dispatch(addQuestionToUers({ users, qid: question.id, authedUser }));
+    });
   };
 }
 

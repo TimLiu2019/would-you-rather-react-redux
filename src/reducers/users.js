@@ -1,5 +1,6 @@
 import {
   RECEIVE_USERS,
+  ADD_QUESTION_TO_USERS,
   ADD_ANSWER_USERS,
   REMOVE_ANSWER_USERS
 } from "../actions/users";
@@ -10,6 +11,14 @@ export default function users(state = {}, action) {
       return {
         ...state,
         ...action.users
+      };
+    case ADD_QUESTION_TO_USERS:
+      return {
+        ...state,
+        [action.authedUser]: {
+          ...state[action.authedUser],
+          questions: state[action.authedUser].questions.concat([action.qid])
+        }
       };
     case ADD_ANSWER_USERS:
       return {
