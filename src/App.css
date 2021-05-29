@@ -97,7 +97,6 @@ li {
 }
 .avatar {
   height: 100px;
-  width: 60%;
   margin: auto;
   display: block;
   border-radius: 50%;
@@ -203,4 +202,61 @@ li {
   height: 20px;
   width: 20px;
   margin-right: 10px;
+}
+
+/* leader board*/
+.score-container{
+  width: 100%;
+  max-width: 590px;
+  padding: 0 auto;
+  display: flex;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  cursor: pointer;
+  flex-direction: column;
+}
+.score-container > div{
+  margin: 10px 5px;
+}
+.score-avatar{
+  width: 24%;
+  float: left;
+  margin: auto;
+  position: relative;
+}
+.score-avatar :after{
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 30px 30px 0;
+  border-color: transparent #608A32 transparent transparent;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+.score-avatar img{
+  height: 90px;
+  margin: auto;
+  display: block;
+  border-radius: 45px;
+ 
+
+}
+.score-info{
+  width: 49%;
+  float: left;
+  margin: 0;
+  border-left: 1px dotted;
+  padding-left: 10px;
+  height: 100%;
+}
+.score{
+  width: 24%;
+  float: right;
+  margin: 0;
+  border-left: 1px dotted;
+  padding-left: 10px;
+  height: 100%;
 }

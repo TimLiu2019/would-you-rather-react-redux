@@ -2,10 +2,11 @@ import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
-import Home from "./Home";
+import DashBoard from "./DashBoard";
 import Nav from "./Nav";
 import NewQuestion from "./newQuestion/NewQuestion";
 import QuestionPage from "./QuestionPage";
+import LeaderBoard from './LeaderBoard'
 import "../App.css";
 
 const App = props => {
@@ -18,9 +19,10 @@ const App = props => {
       <Fragment>
         <div className="container">
           <Nav />
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={DashBoard} />
           <Route path="/add" component={NewQuestion} />
           <Route path="/questions/:id" component={QuestionPage} />
+          <Route path="/leaderboard" component={LeaderBoard} />
         </div>
       </Fragment>
     </Router>

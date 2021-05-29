@@ -116,7 +116,7 @@ const QuestionPage = props => {
                 label={`${(voteOneNum / (voteOneNum + voteTwoNum)) * 100}%`}
               />
               <p className="center">
-                {voteOneNum} of {voteOneNum + voteTwoNum} votes
+                {voteOneNum} out of {voteOneNum + voteTwoNum} votes
               </p>
             </div>
           </div>
@@ -137,7 +137,7 @@ const QuestionPage = props => {
                 label={`${(voteTwoNum / (voteOneNum + voteTwoNum)) * 100}%`}
               />
               <p className="center">
-                {voteTwoNum} of {voteOneNum + voteTwoNum} votes
+                {voteTwoNum} out of {voteOneNum + voteTwoNum} votes
               </p>
             </div>
           </div>

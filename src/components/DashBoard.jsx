@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
-import AnsweredList from "./AnsweredList";
-import UnansweredList from "./UnansweredList";
-const HomeTabs = props => {
+import AnsweredList from "./home/AnsweredList";
+import UnansweredList from "./home/UnansweredList";
+const DashBoard = props => {
   useEffect(() => {});
 
   return (
@@ -19,4 +19,4 @@ const HomeTabs = props => {
     </div>
   );
 };
-export default HomeTabs;
+export default DashBoard;
