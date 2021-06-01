@@ -205,7 +205,7 @@ li {
 }
 
 /* leader board*/
-.score-container{
+.score-container {
   width: 100%;
   max-width: 590px;
   padding: 0 auto;
@@ -216,47 +216,59 @@ li {
   cursor: pointer;
   flex-direction: column;
 }
-.score-container > div{
-  margin: 10px 5px;
+.score-container > div {
+  margin: 0;
 }
-.score-avatar{
+.score-avatar {
   width: 24%;
   float: left;
   margin: auto;
   position: relative;
+  padding: 10px;
 }
-.score-avatar :after{
-  content: '';
+.score-avatar :after {
+  content: "";
   width: 0;
   height: 0;
   border-style: solid;
   border-width: 0 30px 30px 0;
-  border-color: transparent #608A32 transparent transparent;
+  border-color: transparent #608a32 transparent transparent;
   right: 0;
   top: 0;
   position: absolute;
 }
-.score-avatar img{
+.score-avatar img {
   height: 90px;
   margin: auto;
   display: block;
   border-radius: 45px;
- 
-
 }
-.score-info{
+.score-info {
   width: 49%;
   float: left;
-  margin: 0;
+  margin: 10px 5px;
   border-left: 1px dotted;
-  padding-left: 10px;
+  padding: 10px;
   height: 100%;
 }
-.score{
+.score-info h4 {
+  padding-top: 10px;
+}
+
+.score {
   width: 24%;
   float: right;
-  margin: 0;
-  border-left: 1px dotted;
-  padding-left: 10px;
+  margin-top:15px;
+  padding: 0;
   height: 100%;
+  text-align: center;
+  border-left: 1px dotted;
+}
+
+.score-card {
+  border: 1px solid #dad7d7;
+  margin: 10px 10px auto;
+}
+.score-title {
+  background-color: lightgray;
 }

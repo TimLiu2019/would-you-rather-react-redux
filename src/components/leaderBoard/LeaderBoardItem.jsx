@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 const LeaderBoardItem = ({ avatar, name, answeredNum, questionNum, score }) => {
   return (
     <div className="score-container">
@@ -9,12 +10,21 @@ const LeaderBoardItem = ({ avatar, name, answeredNum, questionNum, score }) => {
           <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
         </div>
         <div className="score-info">
-          <p> {answeredNum}</p>
-          <p >{questionNum}</p>
+          <h4>{name}</h4>
+          <Row>
+            <Col xs={10}>Answered Questions</Col>
+            <Col>{answeredNum}</Col>
+          </Row>
+          <Row>
+            <Col xs={10}>Created Questions</Col>
+            <Col>{questionNum}</Col>
+          </Row>
         </div>
         <div className="score">
-          <p >{score}</p>
-          <p >{score}</p>
+          <div className='score-card'>
+            <p className="score-title">Score</p>
+            <p>{score}</p>
+          </div>
         </div>
       </div>
     </div>
