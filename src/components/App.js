@@ -6,7 +6,8 @@ import DashBoard from "./DashBoard";
 import Nav from "./Nav";
 import NewQuestion from "./newQuestion/NewQuestion";
 import QuestionPage from "./QuestionPage";
-import LeaderBoard from './LeaderBoard'
+import LeaderBoard from "./LeaderBoard";
+import SignIn from "./SignIn";
 import "../App.css";
 
 const App = props => {
@@ -20,6 +21,7 @@ const App = props => {
         <div className="container">
           <Nav />
           <Route path="/" exact component={DashBoard} />
+          <Route path="/signin" component={SignIn} />
           <Route path="/add" component={NewQuestion} />
           <Route path="/questions/:id" component={QuestionPage} />
           <Route path="/leaderboard" component={LeaderBoard} />
