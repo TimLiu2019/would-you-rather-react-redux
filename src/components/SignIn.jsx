@@ -7,8 +7,11 @@ const SignIn = ({ signInOptions,dispatch }) => {
   useEffect(() => {
     console.log("sign in", signInOptions);
   });
+  const history = useHistory();
   const handleSignIn = event => {
     dispatch(setAuthedUser(event.target.value));
+    history.push('/');
+
   };
 
   return (

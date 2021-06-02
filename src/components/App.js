@@ -8,6 +8,7 @@ import NewQuestion from "./newQuestion/NewQuestion";
 import QuestionPage from "./QuestionPage";
 import LeaderBoard from "./LeaderBoard";
 import SignIn from "./SignIn";
+import Logout from "./Logout";
 import "../App.css";
 
 const App = props => {
@@ -22,6 +23,7 @@ const App = props => {
           <Nav />
           <Route path="/" exact component={DashBoard} />
           <Route path="/signin" component={SignIn} />
+          <Route path="/logout" component={Logout} />
           <Route path="/add" component={NewQuestion} />
           <Route path="/questions/:id" component={QuestionPage} />
           <Route path="/leaderboard" component={LeaderBoard} />

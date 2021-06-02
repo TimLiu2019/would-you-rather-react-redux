@@ -58,6 +58,18 @@ a {
   padding-left: 0;
 }
 
+.nav-user{
+  align-self: center;
+  margin-left:40px;
+}
+.nav img{
+  height: 30px;
+  margin: auto;
+  display: block;
+  border-radius: 15px;
+  padding-top:5px;
+}
+
 ul {
   padding-left: 0;
 }
