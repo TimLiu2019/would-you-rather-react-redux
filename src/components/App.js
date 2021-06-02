@@ -10,6 +10,7 @@ import LeaderBoard from "./LeaderBoard";
 import SignIn from "./SignIn";
 import Logout from "./Logout";
 import ProtectedRoute from "./protectedRoute/ProtectedRoute";
+import LoadingBar from "react-redux-loading";
 import "../App.css";
 
 const App = props => {
@@ -20,6 +21,7 @@ const App = props => {
   return (
     <Router>
       <Fragment>
+        <LoadingBar />
         <div className="container">
           <Nav />
           <ProtectedRoute path="/" exact component={DashBoard} />
