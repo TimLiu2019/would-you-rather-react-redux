@@ -302,6 +302,12 @@ li {
 .sign-in img{
   margin:10px;
 }
+.sign-in Button{
+  margin:10px 10px 20px 10px;
+  padding:5px;
+  width:96%;
+  text-transform: none;
+}
 .title{
   font-weight: 600;
   margin: 10px 5px 0 5px;

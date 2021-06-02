@@ -1,17 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
+import Button from "react-bootstrap/Button";
 
-const SignIn = ({ signInOptions,dispatch }) => {
+const SignIn = ({ signInOptions, dispatch }) => {
   useEffect(() => {
     console.log("sign in", signInOptions);
   });
+  const [user, setUser] = useState("");
   const history = useHistory();
-  const handleSignIn = event => {
-    dispatch(setAuthedUser(event.target.value));
-    history.push('/');
-
+  const handleSelect = event => {
+    setUser(event.target.value);
+  };
+  const handleSignIn = () => {
+    dispatch(setAuthedUser(user));
+    history.push("/");
   };
 
   return (
@@ -24,7 +28,7 @@ const SignIn = ({ signInOptions,dispatch }) => {
         <img src="/Services.jpg" alt="react-reduz" width="128" height="128" />
       </div>
       <h4>Sign in</h4>
-      <select onChange={handleSignIn}>
+      <select onChange={handleSelect}>
         <option hidden={true}> Select User</option>
         {signInOptions.map(option => (
           <option value={option.value} key={option.value}>
@@ -32,10 +36,17 @@ const SignIn = ({ signInOptions,dispatch }) => {
           </option>
         ))}
       </select>
+      <Button 
+        variant="outline-primary"
+        onClick={handleSignIn}
+        disabled={user === ""}
+      >
+        Sign In
+      </Button>
     </div>
   );
 };
-function mapStateToProps({ users,dispatch }) {
+function mapStateToProps({ users, dispatch }) {
   let signInOptions = [];
   Object.keys(users).forEach(key => {
     signInOptions.push({ value: key, label: key });
