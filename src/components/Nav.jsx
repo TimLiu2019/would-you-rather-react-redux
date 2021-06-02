@@ -7,32 +7,38 @@ const Nav = ({ user }) => {
     <nav className="nav">
       <ul>
         <li>
-          <NavLink
-            to="/"
-            exact
-            activeClassName="active"
-            className="nav-item nav-link "
-          >
-            Home
-          </NavLink>
+          {user && (
+            <NavLink
+              to="/"
+              exact
+              activeClassName="active"
+              className="nav-item nav-link "
+            >
+              Home
+            </NavLink>
+          )}
         </li>
         <li>
-          <NavLink
-            to="/add"
-            activeClassName="active"
-            className="nav-item nav-link "
-          >
-            New Question
-          </NavLink>
+          {user && (
+            <NavLink
+              to="/add"
+              activeClassName="active"
+              className="nav-item nav-link "
+            >
+              New Question
+            </NavLink>
+          )}
         </li>
         <li>
-          <NavLink
-            to="/leaderboard"
-            activeClassName="active"
-            className="nav-item nav-link "
-          >
-            Leader Board
-          </NavLink>
+          {user && (
+            <NavLink
+              to="/leaderboard"
+              activeClassName="active"
+              className="nav-item nav-link "
+            >
+              Leader Board
+            </NavLink>
+          )}
         </li>
         {user && <li className="nav-user">Hello, {user.name}</li>}
         <li>

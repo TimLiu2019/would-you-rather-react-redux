@@ -9,6 +9,7 @@ import QuestionPage from "./QuestionPage";
 import LeaderBoard from "./LeaderBoard";
 import SignIn from "./SignIn";
 import Logout from "./Logout";
+import ProtectedRoute from "./protectedRoute/ProtectedRoute";
 import "../App.css";
 
 const App = props => {
@@ -21,12 +22,12 @@ const App = props => {
       <Fragment>
         <div className="container">
           <Nav />
-          <Route path="/" exact component={DashBoard} />
+          <ProtectedRoute path="/" exact component={DashBoard} />
           <Route path="/signin" component={SignIn} />
           <Route path="/logout" component={Logout} />
-          <Route path="/add" component={NewQuestion} />
-          <Route path="/questions/:id" component={QuestionPage} />
-          <Route path="/leaderboard" component={LeaderBoard} />
+          <ProtectedRoute path="/add" component={NewQuestion} />
+          <ProtectedRoute path="/questions/:id" component={QuestionPage} />
+          <ProtectedRoute path="/leaderboard" component={LeaderBoard} />
         </div>
       </Fragment>
     </Router>
