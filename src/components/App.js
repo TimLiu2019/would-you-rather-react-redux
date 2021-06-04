@@ -21,7 +21,7 @@ const App = props => {
   return (
     <Router>
       <Fragment>
-        <LoadingBar />
+        <LoadingBar className="loading" />
         <div className="container">
           <Nav />
           <ProtectedRoute path="/" exact component={DashBoard} />

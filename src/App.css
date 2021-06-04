@@ -9,6 +9,10 @@ a {
   text-decoration: none;
   color: #252525;
 }
+.loading{
+  background-color: blue;
+  height:2px;
+}
 
 .container {
   max-width: 1000px;
