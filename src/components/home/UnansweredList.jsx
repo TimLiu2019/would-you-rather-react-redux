@@ -19,11 +19,11 @@ const UnansweredList = props => {
 
 function mapStateToProps({ questions, users, authedUser }) {
   const user = users[authedUser];
-  console.log("authedUser", authedUser);
-  console.log("user", user);
+  //console.log("authedUser", authedUser);
+ // console.log("user", user);
   let answered = [];
   if (user !== null && user !== undefined) {
-    console.log("questions", user.answers);
+  //  console.log("questions", user.answers);
     Object.keys(user.answers).forEach(key => {
       answered.push(key);
     });

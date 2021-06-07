@@ -20,14 +20,16 @@ function mapStateToProps({ questions, authedUser, users }) {
   console.log("user", user);
   let answered = [];
   if (user !== null && user !== undefined) {
-    console.log("questions", user.answers);
+    console.log("answered questions", user.answers);
     Object.keys(user.answers).forEach(key => {
       answered.push({ id: key, option: user.answers[key] });
     });
   }
 
   return {
-    answeredArray: answered
+    answeredArray: answered.sort(
+      (a, b) => questions[b.id].timestamp - questions[a.id].timestamp
+    )
   };
 }
 

@@ -3,10 +3,11 @@
 Would-you-rather implements React & Redux
 
 1. Dashboard: home page. Show authed user answered question list and unanswered question list
-2. NewQuesione: new question page, create new quesion to questions
-3. LeaderBoard: leader board page, show rank of each user
-4. SignIn: select a user to sign in
-5. Navbar, on the top of pages, except sign in page.
+2. QuestionPage: questions/:question_id, the datail of poll are available.
+3. NewQuesione: add/, new poll page, create new poll to questions
+4. LeaderBoard: /leaderboard, leader board page, show rank of each user
+5. SignIn: select a user to sign in
+6. Navbar, on the top of pages, sign in page.
 
 ## Requirement
 
