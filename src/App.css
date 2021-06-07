@@ -325,3 +325,34 @@ li {
   cursor: pointer;
   padding-left: 10px;
 }
+@media screen and (max-width: 992px) {
+  .tab-container {
+    width:100%;
+    min-height: 70%;
+    height: flex;
+    margin: 0 auto;
+    border-radius: 7px;
+    border: 1px;
+    border-style: solid;
+    border-collapse: collapse;
+  }
+  .btn-m {
+    width:80%;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .tab-container {
+    width:100%;
+    min-height: 30%;
+    height: flex;
+    margin: 0 auto;
+    border-radius: 7px;
+    border: 1px;
+    border-style: solid;
+    border-collapse: collapse;
+  }
+  .btn-m {
+    width:80%;
+  }
+}
