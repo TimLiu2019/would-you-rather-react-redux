@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import LeaderBoardItem from "./leaderBoard/LeaderBoardItem";
 
-const { useEffect } = React;
+// const { useEffect } = React;
 const LeaderBoard = ({ userIds }) => {
-  useEffect(() => {
-    console.log("props in leader board",userIds);
-  });
+  // useEffect(() => {
+  //   console.log("props in leader board",userIds);
+  // });
   return (
     <div>
       {userIds.map(id => (

@@ -4,7 +4,7 @@ import Tab from "react-bootstrap/Tab";
 import AnsweredList from "./home/AnsweredList";
 import UnansweredList from "./home/UnansweredList";
 const DashBoard = props => {
-  useEffect(() => {});
+  
 
   return (
     <div className="tab-container">

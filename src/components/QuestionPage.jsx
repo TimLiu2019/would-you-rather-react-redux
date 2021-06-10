@@ -7,9 +7,9 @@ import Button from "react-bootstrap/Button";
 import { handleAnswerQuestion } from "../actions/questions";
 
 const QuestionPage = props => {
-  useEffect(() => {
-    console.log("Question", props.question);
-  });
+  // useEffect(() => {
+  //   console.log("Question", props.question);
+  // });
   const [checkedOptionValue, setCheckedOptionValue] = useState("optionOne");
   const history = useHistory();
   const {
@@ -42,7 +42,7 @@ const QuestionPage = props => {
 
   const handleRadioChange = e => {
     setCheckedOptionValue(e.target.value);
-    console.log("checkedValue", e.target.value);
+  //  console.log("checkedValue", e.target.value);
   };
 
   if (authedUserOption === null) {
