@@ -1,3 +1,4 @@
+import produce from "immer";
 import {
   RECEIVE_USERS,
   ADD_QUESTION_TO_USERS,
@@ -13,20 +14,13 @@ export default function users(state = {}, action) {
         ...action.users
       };
     case ADD_QUESTION_TO_USERS:
-      return {
-        ...state,
-        [action.authedUser]: {
-          ...state[action.authedUser],
-          questions: state[action.authedUser].questions.concat([action.qid])
-        }
-      };
+      return produce(state, draft => {
+        draft[action.authedUser].questions.push(action.qid);
+      });
+
     case ADD_ANSWER_USERS:
       return {
         ...state,
-        // [action.authedUser]: {
-        //   ...state[action.authedUser],
-        //   questions: state[action.authedUser].questions.concat(action.qid)
-        // },
         [action.authedUser]: {
           ...state[action.authedUser],
           answers: {

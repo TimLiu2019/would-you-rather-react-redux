@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import ProgressBar from "react-bootstrap/ProgressBar";
@@ -42,7 +42,7 @@ const QuestionPage = props => {
 
   const handleRadioChange = e => {
     setCheckedOptionValue(e.target.value);
-  //  console.log("checkedValue", e.target.value);
+    //  console.log("checkedValue", e.target.value);
   };
 
   if (authedUserOption === null) {
@@ -84,7 +84,6 @@ const QuestionPage = props => {
       </div>
     );
   }
-
 
   return (
     <div className="question">
