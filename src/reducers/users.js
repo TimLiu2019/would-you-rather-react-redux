@@ -19,16 +19,10 @@ export default function users(state = {}, action) {
       });
 
     case ADD_ANSWER_USERS:
-      return {
-        ...state,
-        [action.authedUser]: {
-          ...state[action.authedUser],
-          answers: {
-            ...state[action.authedUser].answers,
-            [action.qid]: action.answer
-          }
-        }
-      };
+      return produce(state, draft => {
+        draft[action.authedUser].answers[action.qid] = action.answer;
+      });
+
     // when add answer to user but failed to server side, remove it from store
     case REMOVE_ANSWER_USERS:
       let before_answers = state[action.authedUser].answers;
