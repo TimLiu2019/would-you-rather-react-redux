@@ -24,18 +24,11 @@ export default function users(state = {}, action) {
       });
 
     // when add answer to user but failed to server side, remove it from store
+    // use delete
     case REMOVE_ANSWER_USERS:
-      let before_answers = state[action.authedUser].answers;
-      // user underling to replace content
-      const { [action.qid]: _, ...answers } = before_answers;
-
-      return {
-        ...state,
-        [action.authedUser]: {
-          ...state[action.authedUser],
-          answers
-        }
-      };
+      return produce(state, draft => {
+        delete draft[action.authedUser].answers[action.qid];
+      });
     default:
       return state;
   }
