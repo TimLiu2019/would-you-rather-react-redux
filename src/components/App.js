@@ -15,7 +15,7 @@ import "../App.css";
 
 const App = props => {
   useEffect(() => {
-    props.dispatch(handleInitialData());
+    props.handleInitialData();
   });
 
   return (
@@ -36,4 +36,15 @@ const App = props => {
   );
 };
 
-export default connect()(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    handleInitialData: () => {
+      dispatch(handleInitialData());
+    }
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);
