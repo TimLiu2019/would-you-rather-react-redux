@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 import Button from "react-bootstrap/Button";
 
 const SignIn = ({ signInOptions, dispatch }) => {
-  useEffect(() => {
-    console.log("sign in", signInOptions);
-  });
   const [user, setUser] = useState("");
   const history = useHistory();
   const handleSelect = event => {
@@ -36,7 +33,7 @@ const SignIn = ({ signInOptions, dispatch }) => {
           </option>
         ))}
       </select>
-      <Button 
+      <Button
         variant="outline-primary"
         onClick={handleSignIn}
         disabled={user === ""}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { handleAddQuestion } from "../../actions/questions";
 
@@ -15,11 +15,9 @@ const NewQuestion = props => {
     const { dispatch } = props;
     dispatch(handleAddQuestion(optionOne, optionTwo));
 
-    console.log("option one", optionOne);
-    console.log("option one", optionTwo);
     setOptionOne("");
     setOptionTwo("");
-    history.push('/');
+    history.push("/");
   };
 
   return (

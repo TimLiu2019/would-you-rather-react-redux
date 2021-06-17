@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import QuestionCard from "./QuestionCard";
 
 const UnansweredList = props => {
-  useEffect(() => {
-    console.log("unanswered id list", props);
-  });
   return (
     <div>
       {props.questionIds.map(id => (

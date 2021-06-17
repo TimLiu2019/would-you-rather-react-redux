@@ -7,9 +7,6 @@ import Button from "react-bootstrap/Button";
 import { handleAnswerQuestion } from "../actions/questions";
 
 const QuestionPage = props => {
-  // useEffect(() => {
-  //   console.log("Question", props.question);
-  // });
   const [checkedOptionValue, setCheckedOptionValue] = useState("optionOne");
   const history = useHistory();
   const {
@@ -42,7 +39,6 @@ const QuestionPage = props => {
 
   const handleRadioChange = e => {
     setCheckedOptionValue(e.target.value);
-    //  console.log("checkedValue", e.target.value);
   };
 
   if (authedUserOption === null) {
@@ -112,7 +108,9 @@ const QuestionPage = props => {
               <p>Would you rather {question.optionOne.text}?</p>
               <ProgressBar
                 now={(voteOneNum / (voteOneNum + voteTwoNum)) * 100}
-                label={`${(voteOneNum / (voteOneNum + voteTwoNum)) * 100}%`}
+                label={`${(1 -
+                  (voteTwoNum / (voteOneNum + voteTwoNum)).toFixed(3)) *
+                  100}%`}
               />
               <p className="center">
                 {voteOneNum} out of {voteOneNum + voteTwoNum} votes
@@ -133,7 +131,8 @@ const QuestionPage = props => {
               <p>Would you rather {question.optionTwo.text}?</p>
               <ProgressBar
                 now={(voteTwoNum / (voteOneNum + voteTwoNum)) * 100}
-                label={`${(voteTwoNum / (voteOneNum + voteTwoNum)) * 100}%`}
+                label={`${(voteTwoNum / (voteOneNum + voteTwoNum)).toFixed(3) *
+                  100}%`}
               />
               <p className="center">
                 {voteTwoNum} out of {voteOneNum + voteTwoNum} votes
@@ -151,15 +150,6 @@ function mapStateToProps({ authedUser, questions, users }, props) {
   let authedUserOption = null;
   let voteOneNum = 0;
   let voteTwoNum = 0;
-  // if (user !== null && user !== undefined) {
-  //   console.log("answer", user.answers);
-  //   Object.keys(user.answers).forEach(key => {
-  //     //  answered.push({ id: key, option: user.answers[key] });
-  //     if (key === id) {
-  //       option = user.answers[key];
-  //     }
-  //   });
-  // }
   const question = questions[id];
   if (authedUserOption === null && question) {
     const optionO = question.optionOne;

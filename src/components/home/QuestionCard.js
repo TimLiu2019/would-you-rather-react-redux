@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 const QuestionCard = props => {
-  useEffect(() => {
-    console.log("question list props", props);
-  });
-
   const history = useHistory();
 
   const toQuestion = (e, id) => {

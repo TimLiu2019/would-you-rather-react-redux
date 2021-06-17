@@ -15,9 +15,17 @@ Would-you-rather implements React & Redux
 2. Nodejs
 3. npm
 4. yard
-5. Reactjs
+5. ReactJS
 
-## Steps of yarn add
+## How to install the project
+
+yarn install or npm install
+
+## How to start the project
+
+yarn start
+
+## Memo: Steps of yarn add
 
 1. yarn add react-router-dom
 2. yarn add redux
@@ -25,7 +33,7 @@ Would-you-rather implements React & Redux
 4. yarn add redux-thunk
 5. yarn add react-bootstrap
 
-# Would You Rather Project
+## Would You Rather Project: from Udacity
 
 This is the final assessment project for Udacity's React & Redux course.
 
