@@ -9,7 +9,7 @@ const Nav = ({ user }) => {
         <li>
           {user && (
             <NavLink
-              to="/"
+              to="/dashboard"
               exact
               activeClassName="active"
               className="nav-item nav-link "

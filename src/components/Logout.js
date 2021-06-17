@@ -4,8 +4,7 @@ import { useHistory } from "react-router-dom";
 const Logout = () => {
   const history = useHistory();
   useEffect(() => {
-    history.push("/signin");
-    //    window.location = "/signin";
+    history.push("/sign-in");
   });
 
   return null;

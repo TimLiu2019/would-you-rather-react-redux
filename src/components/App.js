@@ -9,6 +9,7 @@ import QuestionPage from "./QuestionPage";
 import LeaderBoard from "./LeaderBoard";
 import SignIn from "./SignIn";
 import Logout from "./Logout";
+import NotFound from './NotFound'
 import ProtectedRoute from "./protectedRoute/ProtectedRoute";
 import LoadingBar from "react-redux-loading";
 import "../App.css";
@@ -24,9 +25,11 @@ const App = props => {
         <LoadingBar className="loading" />
         <div className="container">
           <Nav />
-          <ProtectedRoute path="/" exact component={DashBoard} />
-          <Route path="/signin" component={SignIn} />
+          <Route path="/" exact component={SignIn} />
+          <Route path="/sign-in" component={SignIn} />
           <Route path="/logout" component={Logout} />
+          <Route path="/not-found" component={NotFound}></Route>
+          <ProtectedRoute path="/dashboard" component={DashBoard} />
           <ProtectedRoute path="/add" component={NewQuestion} />
           <ProtectedRoute path="/questions/:id" component={QuestionPage} />
           <ProtectedRoute path="/leaderboard" component={LeaderBoard} />

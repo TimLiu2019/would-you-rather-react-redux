@@ -14,7 +14,7 @@ const ProtectedRoute = ({
       path={path}
       {...rest}
       render={props => {
-        if (!authedUser) return <Redirect to="/signin" />;
+        if (!authedUser) return <Redirect to="/not-found" />;
         return Component ? <Component {...props} /> : render(props);
       }}
     />

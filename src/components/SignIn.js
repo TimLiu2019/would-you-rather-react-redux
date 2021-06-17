@@ -12,7 +12,7 @@ const SignIn = ({ signInOptions, dispatch }) => {
   };
   const handleSignIn = () => {
     dispatch(setAuthedUser(user));
-    history.push("/");
+    history.push("/dashboard");
   };
 
   return (

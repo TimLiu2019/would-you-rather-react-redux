@@ -15,7 +15,7 @@ const NewQuestion = props => {
 
     setOptionOne("");
     setOptionTwo("");
-    history.push("/");
+    history.push("/dashboard");
   };
 
   return (
@@ -26,13 +26,13 @@ const NewQuestion = props => {
       <input
         type="text"
         placeholder="Enter Option one text here"
-        onChange={e => setOptionOne(e.target.value)}
+        onChange={e => setOptionOne(e.target.value.trim())}
       />
       <p className="center new-question-title"> Or</p>
       <input
         type="text"
         placeholder="Enter Option two text here"
-        onChange={e => setOptionTwo(e.target.value)}
+        onChange={e => setOptionTwo(e.target.value.trim())}
       />
       <Button
         variant="outline-primary"
