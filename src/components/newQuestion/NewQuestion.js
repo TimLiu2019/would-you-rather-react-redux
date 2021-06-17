@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -8,12 +8,10 @@ const NewQuestion = props => {
   const [optionOne, setOptionOne] = useState("");
   const [optionTwo, setOptionTwo] = useState("");
   const history = useHistory();
-  useEffect(() => {});
 
   const handleSubmit = e => {
     e.preventDefault();
-    const { dispatch } = props;
-    dispatch(handleAddQuestion(optionOne, optionTwo));
+    props.handleAddQuestion(optionOne, optionTwo);
 
     setOptionOne("");
     setOptionTwo("");
@@ -46,5 +44,17 @@ const NewQuestion = props => {
     </div>
   );
 };
+//  use mapDispatchToProps to get a function in props
+//  that can dispatch a specific action
+const mapDispatchToProps = dispatch => {
+  return {
+    handleAddQuestion: (textOne, textTwo) => {
+      dispatch(handleAddQuestion(textOne, textTwo));
+    }
+  };
+};
 
-export default connect()(NewQuestion);
+export default connect(
+  null,
+  mapDispatchToProps
+)(NewQuestion);
