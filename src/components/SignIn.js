@@ -1,18 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 import Button from "react-bootstrap/Button";
 
-const SignIn = ({ signInOptions, dispatch }) => {
+const SignIn = ({ signInOptions, dispatch, location }) => {
+  useEffect(() => {
+    setLocation(location.state);
+  }, [location.state]);
   const [user, setUser] = useState("");
+  const [preLocation, setLocation] = useState("");
   const history = useHistory();
+
   const handleSelect = event => {
     setUser(event.target.value);
   };
   const handleSignIn = () => {
     dispatch(setAuthedUser(user));
-    history.push("/dashboard");
+    // if previous page exist, go to the page after sign in
+    if (preLocation && preLocation !== "") {
+      history.push(preLocation.location);
+    } else {
+      history.push("/dashboard");
+    }
   };
 
   return (

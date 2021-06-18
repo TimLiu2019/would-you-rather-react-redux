@@ -5,6 +5,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import { handleAnswerQuestion } from "../actions/questions";
+import NotFound from "./NotFound";
 
 const QuestionPage = props => {
   const [checkedOptionValue, setCheckedOptionValue] = useState("optionOne");
@@ -18,7 +19,7 @@ const QuestionPage = props => {
     voteTwoNum
   } = props;
   if (question === null) {
-    return <p> This question doesn't existed </p>;
+    return <NotFound />;
   }
   const selectedStyle = {
     backgroundColor: "#add8e6"
@@ -151,6 +152,9 @@ function mapStateToProps({ authedUser, questions, users }, props) {
   let voteOneNum = 0;
   let voteTwoNum = 0;
   const question = questions[id];
+  if (!question) {
+    return { question: null };
+  }
   if (authedUserOption === null && question) {
     const optionO = question.optionOne;
     const optionT = question.optionTwo;
