@@ -147,7 +147,6 @@ const QuestionPage = props => {
 };
 function mapStateToProps({ authedUser, questions, users }, props) {
   const { id } = props.match.params;
-  //  const user = users[authedUser];
   let authedUserOption = null;
   let voteOneNum = 0;
   let voteTwoNum = 0;
